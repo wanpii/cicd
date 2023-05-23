@@ -70,9 +70,10 @@ pipeline {
 }
 
 def deploy(environment, port) {
+    pm2var = C:\\Users\\marks\\AppData\\Roaming\\npm\\pm2;
     git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
-    bat "pm2 delete greetings-app-${environment} & EXIT /B 0"
-    bat "pm2 start app.py --name greetings-app-${environment} -- --port ${port}"
+    bat "pm2var delete greetings-app-${environment} & EXIT /B 0"
+    bat "pm2var start app.py --name greetings-app-${environment} -- --port ${port}"
 }
 
 def test(environment) {
