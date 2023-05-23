@@ -5,7 +5,7 @@ pipeline {
         stage('install-pip-deps') {
             steps {
                 echo 'Installing all required dependencies..'
-                git url: 'https://github.com/mtararujs/python-greetings.git'
+                git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
                 sh 'ls' // Optional: Check the contents of the cloned repository
                 sh 'pip3 install -r requirements.txt' // Use pip3 for Python 3
                 
@@ -73,13 +73,13 @@ pipeline {
 }
 
 def deploy(environment, port) {
-    git url: 'https://github.com/mtararujs/python-greetings.git'
+    git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
     sh "pm2 delete greetings-app-${environment} & EXIT /B 0" // Stop existing service
     sh "pm2 start app.py --name greetings-app-${environment} -- --port ${port}" // Start new service
 }
 
 def test(environment) {
-    git url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    git url: 'https://github.com/mtararujs/course-js-api-framework.git', branch: 'main'
     sh 'npm install' // Install required libraries
     sh "npm run greetings greetings_${environment}" // Run tests
 }
