@@ -6,8 +6,8 @@ pipeline {
             steps {
                 echo 'Installing all required dependencies..'
                 git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
-                sh 'ls'
-                sh 'pip3 install -r requirements.txt'
+                bat 'ls'
+                bat 'pip3 install -r requirements.txt'
             }
         }
         
@@ -71,12 +71,12 @@ pipeline {
 
 def deploy(environment, port) {
     git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
-    sh "pm2 delete greetings-app-${environment} & set 'errorlevel=0'"
-    sh "pm2 start app.py --name greetings-app-${environment} -- --port ${port}"
+    bat "pm2 delete greetings-app-${environment} & set 'errorlevel=0'"
+    bat "pm2 start app.py --name greetings-app-${environment} -- --port ${port}"
 }
 
 def test(environment) {
     git url: 'https://github.com/mtararujs/course-js-api-framework.git', branch: 'main'
-    sh 'npm install'
-    sh "npm run greetings greetings_${environment}"
+    bat 'npm install'
+    bat "npm run greetings greetings_${environment}"
 }
