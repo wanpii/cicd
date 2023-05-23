@@ -71,7 +71,7 @@ pipeline {
 
 def deploy(environment, port) {
     git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
-    bat "pm2 delete greetings-app-${environment} & & EXIT /B 0"
+    bat "pm2 delete greetings-app-${environment} & EXIT /B 0"
     bat "pm2 start app.py --name greetings-app-${environment} -- --port ${port}"
 }
 
