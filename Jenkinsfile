@@ -7,7 +7,7 @@ pipeline {
                 echo 'Installing all required dependencies..'
                 git url: 'https://github.com/mtararujs/python-greetings.git', branch: 'main'
                 bat 'dir'
-                bat 'pip3 install -r requirements.txt'
+                bat 'C:\Users\marks\AppData\Local\Programs\Python\Python311\Scripts\pip.exe install -r requirements.txt'
             }
         }
         
